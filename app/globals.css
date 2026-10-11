@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf9fc;
+  --foreground: #2b2b38;
+
+  /* Pastel palette — soft backgrounds paired with a dark, WCAG-readable
+     foreground. Light mode is primary. */
+  --pastel-lavender: #e7e3fb;
+  --pastel-lavender-fg: #3a2f6b;
+  --pastel-mint: #d9f3e4;
+  --pastel-mint-fg: #1f5440;
+  --pastel-peach: #ffe6d4;
+  --pastel-peach-fg: #7a4320;
+  --pastel-blue: #dcebfb;
+  --pastel-blue-fg: #1f466e;
+  --pastel-blush: #fbe0ea;
+  --pastel-blush-fg: #86294f;
+
+  /* Column tokens consumed by lib/types.ts COLUMNS. */
+  --pastel-yellow: var(--pastel-peach);
+  --pastel-green: var(--pastel-mint);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-pastel-lavender: var(--pastel-lavender);
+  --color-pastel-lavender-fg: var(--pastel-lavender-fg);
+  --color-pastel-mint: var(--pastel-mint);
+  --color-pastel-mint-fg: var(--pastel-mint-fg);
+  --color-pastel-peach: var(--pastel-peach);
+  --color-pastel-peach-fg: var(--pastel-peach-fg);
+  --color-pastel-blue: var(--pastel-blue);
+  --color-pastel-blue-fg: var(--pastel-blue-fg);
+  --color-pastel-blush: var(--pastel-blush);
+  --color-pastel-blush-fg: var(--pastel-blush-fg);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Gentle enter animations for toasts and the welcome modal. Disabled for
+   users who prefer reduced motion. */
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.toast-enter {
+  animation: toast-enter 0.2s ease-out;
+}
+
+.modal-enter {
+  animation: modal-enter 0.18s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast-enter,
+  .modal-enter {
+    animation: none;
+  }
+}
